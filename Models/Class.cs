@@ -1,5 +1,8 @@
+using System.Text.Json.Serialization;
+
 namespace Web_API.Models
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Class
     {
         Knight = 1,
