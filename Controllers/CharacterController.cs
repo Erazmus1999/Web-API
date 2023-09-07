@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web_API.Models;
+using Web_API.Services.CharacterService;
 
 namespace Web_API.Controllers
 {
@@ -11,29 +12,29 @@ namespace Web_API.Controllers
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase
     {
-        private static List<Character> characters = new List<Character>
+        private readonly ICharacterService _characterService;
+
+        public CharacterController(ICharacterService characterService)
         {
-            new Character(),
-            new Character{Id = 1, Name = "Brock", Class = Class.Necromancer}
-        };
+            _characterService = characterService;
+        }
 
         [HttpGet("GetAllCharacters")]
         public ActionResult<List<Character>> Get()
         {
-            return Ok(characters);
+           return Ok(_characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
         public ActionResult<Character> GetSingleCharacter(int id)
         {
-            return Ok(characters.FirstOrDefault(x => x.Id == id));
+            return Ok(_characterService.GetCharacterById(id));
         }
 
         [HttpPost]
         public ActionResult<List<Character>> AddCharacter(Character newCharacter)
         {
-            characters.Add(newCharacter);
-            return Ok(characters);
+           return Ok(_characterService.AddCharacter(newCharacter));
         }
     }
 }
