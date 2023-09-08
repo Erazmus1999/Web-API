@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Web_API.Dtos.Character
 {
-    public class GetCharacterDto
-    {   
+    public class UpdateCharacterDto
+    {
         public int Id { get; set; }
         public string Name { get; set; } = "Frodo";
         public int HitPoints { get; set; } = 100;
