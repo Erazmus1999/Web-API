@@ -15,5 +15,6 @@ namespace Web_API.Models
         public int Intelligence {get; set; } = 10;
         public int Defense {get; set; } = 10;
         public Class Class {get; set; } = Class.Paladin;
+        public User? User {get; set; }
     }
 }
