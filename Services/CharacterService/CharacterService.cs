@@ -8,20 +8,14 @@ using Web_API.Models;
 namespace Web_API.Services.CharacterService
 {
     public class CharacterService : ICharacterService
-    {
-        
-        List<Character> characters = new List<Character>
-        {
-            new Character(),
-            new Character{Id = 1, Name = "Brock", Class = Class.Necromancer}
-        };
+    {     
 
     private readonly IMapper _mapper;
     private readonly DataContext _context;
 
     public CharacterService(IMapper mapper, DataContext context)
     {
-           _context = context;
+            _context = context;
             _mapper = mapper;
         }
 
